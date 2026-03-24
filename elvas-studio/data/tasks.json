@@ -1,0 +1,80 @@
+{
+  "columns": {
+    "backlog": {
+      "tasks": [
+        {
+          "id": "t001",
+          "title": "Definir pauta editorial abril",
+          "client": "optimatech",
+          "priority": "alta"
+        },
+        {
+          "id": "t002",
+          "title": "Mapear concorrentes diretos",
+          "client": "xpon",
+          "priority": "media"
+        },
+        {
+          "id": "t003",
+          "title": "Levantar assets e identidade visual",
+          "client": "csm",
+          "priority": "baixa"
+        },
+        {
+          "id": "t004",
+          "title": "Briefing inicial de posicionamento",
+          "client": "mais-saude",
+          "priority": "media"
+        }
+      ]
+    },
+    "progresso": {
+      "tasks": [
+        {
+          "id": "t005",
+          "title": "Criar landing page institucional",
+          "client": "mais-saude",
+          "priority": "alta"
+        },
+        {
+          "id": "t006",
+          "title": "Desenvolver posts LinkedIn semana 13",
+          "client": "optimatech",
+          "priority": "alta"
+        }
+      ]
+    },
+    "revisao": {
+      "tasks": [
+        {
+          "id": "t007",
+          "title": "Aprovar proposta de identidade Q2",
+          "client": "csm",
+          "priority": "alta"
+        },
+        {
+          "id": "t008",
+          "title": "Revisar copy do site",
+          "client": "xpon",
+          "priority": "media"
+        }
+      ]
+    },
+    "concluido": {
+      "tasks": [
+        {
+          "id": "t009",
+          "title": "Onboarding e kickoff XPON",
+          "client": "xpon",
+          "priority": "alta"
+        },
+        {
+          "id": "t010",
+          "title": "Setup hub OPTIMATECH no GitHub",
+          "client": "optimatech",
+          "priority": "media"
+        }
+      ]
+    }
+  }
+}

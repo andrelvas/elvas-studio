@@ -1,0 +1,36 @@
+{
+  "clients": [
+    {
+      "id": "optimatech",
+      "name": "OPTIMATECH",
+      "status": "ativo",
+      "color": "#2563EB",
+      "hub_url": "https://andrelvas.github.io/hub-optimatech",
+      "tags": ["industrial", "software", "digital-twin"]
+    },
+    {
+      "id": "xpon",
+      "name": "XPON",
+      "status": "ativo",
+      "color": "#F97316",
+      "hub_url": "https://andrelvas.github.io/hub-xpon",
+      "tags": ["startup", "tech", "growth"]
+    },
+    {
+      "id": "csm",
+      "name": "CLINICA SANTA MARIA",
+      "status": "ativo",
+      "color": "#8B5CF6",
+      "hub_url": "https://andrelvas.github.io/hub-clinica-santa-maria",
+      "tags": ["saúde", "clínica", "branding"]
+    },
+    {
+      "id": "mais-saude",
+      "name": "MAIS SAUDE",
+      "status": "ativo",
+      "color": "#10B981",
+      "hub_url": "https://andrelvas.github.io/hub-mais-saude",
+      "tags": ["saúde", "bem-estar", "digital"]
+    }
+  ]
+}

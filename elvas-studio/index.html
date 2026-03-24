@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELVAS*STUDIO — Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header__brand">
+      <div class="brand">ELVAS<span class="brand__star">*</span>STUDIO</div>
+      <div class="brand__tagline">Hub de Projetos</div>
+    </div>
+    <div class="header__meta">
+      <span class="header__date" id="current-date"></span>
+      <span class="badge badge--active" id="active-count">4 clientes ativos</span>
+    </div>
+  </header>
+
+  <!-- ─── MAIN ───────────────────────────────────────────────────────────── -->
+  <main class="layout">
+
+    <!-- KPI BAR -->
+    <div class="kpi-bar" id="kpi-bar">
+      <div class="kpi-item">
+        <span class="kpi-value" id="kpi-total-tasks">0</span>
+        <span class="kpi-label">Tarefas totais</span>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="kpi-item">
+        <span class="kpi-value kpi-value--accent" id="kpi-in-progress">0</span>
+        <span class="kpi-label">Em progresso</span>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="kpi-item">
+        <span class="kpi-value kpi-value--success" id="kpi-done">0</span>
+        <span class="kpi-label">Concluídas</span>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="kpi-item">
+        <span class="kpi-value kpi-value--warning" id="kpi-review">0</span>
+        <span class="kpi-label">Em revisão</span>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="kpi-item">
+        <span class="kpi-value" id="kpi-clients">4</span>
+        <span class="kpi-label">Clientes ativos</span>
+      </div>
+    </div>
+
+    <!-- CLIENTS -->
+    <section class="section">
+      <div class="section__header">
+        <h2 class="section__title">Clientes</h2>
+        <span class="section__sub">Clique para abrir o hub do cliente</span>
+      </div>
+      <div class="clients-grid" id="clients-grid">
+        <!-- rendered by JS -->
+      </div>
+    </section>
+
+    <!-- KANBAN -->
+    <section class="section">
+      <div class="section__header">
+        <h2 class="section__title">Tarefas Prioritárias</h2>
+        <button class="btn-accent" id="btn-add-task">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Nova tarefa
+        </button>
+      </div>
+      <div class="kanban">
+
+        <div class="kanban__col">
+          <div class="kanban__col-header">
+            <span class="col-dot col-dot--neutral"></span>
+            <span class="col-title">Backlog</span>
+            <span class="col-count" id="count-backlog">0</span>
+          </div>
+          <div class="kanban__cards" id="cards-backlog" data-col="backlog"></div>
+        </div>
+
+        <div class="kanban__col">
+          <div class="kanban__col-header">
+            <span class="col-dot col-dot--accent"></span>
+            <span class="col-title">Em Progresso</span>
+            <span class="col-count" id="count-progresso">0</span>
+          </div>
+          <div class="kanban__cards" id="cards-progresso" data-col="progresso"></div>
+        </div>
+
+        <div class="kanban__col">
+          <div class="kanban__col-header">
+            <span class="col-dot col-dot--warning"></span>
+            <span class="col-title">Revisão</span>
+            <span class="col-count" id="count-revisao">0</span>
+          </div>
+          <div class="kanban__cards" id="cards-revisao" data-col="revisao"></div>
+        </div>
+
+        <div class="kanban__col">
+          <div class="kanban__col-header">
+            <span class="col-dot col-dot--success"></span>
+            <span class="col-title">Concluído</span>
+            <span class="col-count" id="count-concluido">0</span>
+          </div>
+          <div class="kanban__cards" id="cards-concluido" data-col="concluido"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── ADD TASK MODAL ─────────────────────────────────────────────────── -->
+  <div class="modal" id="modal-task" role="dialog" aria-modal="true">
+    <div class="modal__overlay" id="modal-overlay"></div>
+    <div class="modal__box">
+      <div class="modal__header">
+        <h3 class="modal__title">Nova Tarefa</h3>
+        <button class="modal__close" id="btn-modal-close" aria-label="Fechar">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <form id="form-task">
+        <div class="field">
+          <label class="field__label" for="task-title">Título</label>
+          <input class="field__input" type="text" id="task-title" placeholder="Descreva a tarefa..." required autocomplete="off" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field__label" for="task-client">Cliente</label>
+            <select class="field__input" id="task-client">
+              <option value="optimatech">OPTIMATECH</option>
+              <option value="xpon">XPON</option>
+              <option value="csm">CLINICA SANTA MARIA</option>
+              <option value="mais-saude">MAIS SAUDE</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="task-priority">Prioridade</label>
+            <select class="field__input" id="task-priority">
+              <option value="alta">Alta</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="task-col">Coluna</label>
+          <select class="field__input" id="task-col">
+            <option value="backlog">Backlog</option>
+            <option value="progresso">Em Progresso</option>
+            <option value="revisao">Revisão</option>
+            <option value="concluido">Concluído</option>
+          </select>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn-ghost" id="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-primary">Adicionar tarefa</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────────────────── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
